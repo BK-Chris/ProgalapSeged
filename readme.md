@@ -833,4 +833,4 @@ Függvény vége
 
 ---
 
-<a href="#programozási-tételek"><div style="text-align: right">**Oldal elejére**</div></a>
+**[Oldal elejére](#programozási-tételek)**
