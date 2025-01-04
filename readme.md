@@ -1,10 +1,11 @@
 # Programozási tételek
-
+ 
 >Segédanyag az [Eötvös Loránd Tudomány Egyetem](https://www.inf.elte.hu/) - Programtervező Informatikus (FOSZK) - Programozási Alapismeretek (IK-19fszPAEG) - 2024/25/I. félévben oktatott tantárgyához.
+>Ez a dokumentum egy [korábbi segédanyag](https://github.com/BK-Chris/_seged/) átdolgozása, itt általános megoldásokat találsz.
 
-A képzés során az alapvető programozási tételek, ezek algoritmusának megírását és használatáról tanulunk. A képzés során egy [specifikációs szoftvert](https://progalapfsz.elte.hu/specifikacio/) is használunk. A program jelentős segítséget nyújt az elméleti feladatok gyors megoldásában, lehetővé téve, hogy hamarabb áttérjünk az algoritmusok megírására és a kódolásra. Ezen kívűl a szoftver lehetőséget biztosít tesztesetek vizsgálatára, amely elősegíti a korai felismerését annak, hogy a megoldás helyes irányba halad-e.
+A képzés során az alapvető programozási tételek, ezek algoritmusának megírásáról és használatukról tanulunk. A képzés során egy [specifikációs szoftver](https://progalapfsz.elte.hu/specifikacio/)t is használunk. A program jelentős segítséget nyújt az elméleti feladatok gyors megoldásában, lehetővé téve, hogy hamarabb áttérjünk az algoritmusok megírására és a kódolásra. Ezen kívűl a szoftver lehetőséget biztosít tesztesetek vizsgálatára, amely elősegíti a korai felismerését annak, hogy a megoldás helyes irányba halad-e.
 Az itt felsorolt algoritmusok a modernebb programozási nyelvekben kivétel nélkül megtalálhatóak, azonban ezeknek az ismerete és működése nélkülözhetetlen tudás a továbbiakban azok számára akik ezt a pályát választják.
-Ez a dokumentum egy [korábbi segédanyag](https://github.com/BK-Chris/_seged/) átdolgozása, itt csak általános megoldásokat találsz.
+
 
 ## Tartalom
 
@@ -13,7 +14,8 @@ Ez a dokumentum egy [korábbi segédanyag](https://github.com/BK-Chris/_seged/) 
    - [Gyakori beéptett függvények](#gyakori-beépített-függvények)
    - [Saját függvény készítése](#saját-függvény-készítése)
    - [Specifikáció felépítése](#specifikáció-felépítése)
-   - [Egyebek](#egyebek)
+   - [Egyebek](#egyéb-tudnivalók)
+       - [Lambda kifejezések](#lambda-kifejezésekről)
 - [Alapvető programozási tételek](#alapvető-programozási-tételek)
    - [Összegzés](#összegzés)
    - [Megszámolás](#megszámolás)
@@ -27,7 +29,7 @@ Ez a dokumentum egy [korábbi segédanyag](https://github.com/BK-Chris/_seged/) 
    - [Kiválasztás](#kiválasztás)
    - [Másolás](#másolás)
    - [Kiválogatás](#kiválogatás)
-- [Egyéb algoritmusok](#egyeb-algoritmusok)
+- [Egyéb algoritmusok](#egyéb-algoritmusok)
 
 ## Specifikáció kisokos
 ### Jelzések
@@ -118,24 +120,51 @@ Ef: // Előfeltétel
 Uf: // Utófeltétel
 ```
 
-### Egyebek
+### Egyéb tudnivalók
 
 - A specifikácó készítő a nagybetűs függvényneveket, változó neveket nem fogadja el, illetve típusként értelmezi azokat.
+
+---
+
+#### Lambda kifejezésekről
+
+A C# algoritmusban, hogy felhasználható, általánosabb példákat tudjak nyújtani, ezért lamba kifejezéseket használtam.
+A lambda kifejezéseket egyszerű, könnyen kifejezhető egy célra használatos függvények. Ugyan úgy van bemeneti illetve visszatérési értéke mint a normál függvényeknek csak rövidebben leírható.
+
+Bővebb leírást a [Microsoft](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions) oldalán találsz.
+
+**Általánosan:**
+
+```csharp
+(paraméterek) => kifejezés
+```
+
+**C#-kóddal**
+ ```csharp
+ Func<int, bool> parosE = (elem) => elem % 2 == 0;
+```
+Például a [megszámolás](#megszámolás) specifikációban ilyet használunk csak a parosE helyett függvény helyett a függvény megkapja paraméterként ezt a kifejezést.
+ ```csharp
+Megszamolas(elemszam, elemek, (elem) => elem % 2 == 0);
+```
 
 ----
 
 ## Alapvető programozási tételek
 
-Az algoritmusok célja, hogy egy problémára a lehető leghatékonyabb módon megoldást nyújtson.
-
-> Néhány helyen a specifikáció miatt írtam visszavezetést, de a pszeudo kódba az általános alakot adtam meg.
-
-> - A specifikáció készítőben és pszeudokódban az indexelés 1- től kezdődik.
-> - C# kódban az indexelés 0- tól kezdődik.
+Az algoritmusok célja, hogy egy problémára a lehető leghatékonyabb módon megoldást nyújtsanak.
+**Tudnivalók:**
+- A **specifikáció készítő**ben és **pszeudokód**ban az **index**elés **1**-től kezdődik.
+- **C#** kódban az **index**elés **0**-tól kezdődik.
+- Az **elemek.Length** mindig az **elemszámot** jelenti.
+Mivel a C# egy objektumorientált nyelv, ezért minden változó és típus egy-egy osztály tagja, és minden objektumnak vannak tulajdonságai. Ebben az esetben a tömbök hosszát kérdezzük le.
+A függvényekben **int** **típus** szerepel **példa**ként, de ez **lecserélhető** bármilyen típusra, **ahol az adott algoritmushoz szükséges műveletek elvégezhetők**. 
+Például összegzésnél olyan típust kell használni az elemeknél, ahol az összeadás operátor értelmezett. *Ez összetett típusok vagy osztályok esetében nem mindig magától értetődő.*
+Néhány helyen a specifikáció miatt visszavezetést adtam meg, de a pszeudokódban az általános alakot használtam.
 
 ### Összegzés
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2OvQrCQBCEX%2BWYSuEIRkizEAvBSrSRNF5SHHEjh%2FmR3NkkpM9z%2BiRyCSHCFrszs99uD%2Fvm3BQm1840NQhHJsElV7bT1Xccr3Ka%2BOV7FQbB4mVpm9ZnQ6KxtuOnt71yKtZ1cRA7ryXFkopv9%2BSyMfEfR854ZbItJBxbZ0Gqx0M7DcISIxF51BwmoSIp1pp%2BmS%2BQ2EeQqHXFIECiZfspHSgcsuEHnX8s8%2B4AAAA%3D)
+**Specifikáció** - (https://tinyurl.com/wtfwtsds)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: osszeg∈N
@@ -153,13 +182,25 @@ Ciklus vége
 ```
 **C# algoritmus**
 ```csharp
-
+int Osszegzes(int[] elemek)
+{
+    int osszeg = 0;
+    for (int i = 0; i < elemek.Length; i++)
+    {
+        osszeg += elemek[i];
+    }
+    return osszeg;
+}
+```
+**Használat**
+```csharp
+int osszeg = Osszegzes(elemek);
 ```
 
 ---
 ### Megszámolás
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2OzQqCQBDHX2UYCAoGUcvLgIFSp6BD0Gn1sNkKS2rhbpfEu8%2FZk8RqUreZ%2F8dvpkPzUIUudSGtvjfImCoGVanavGT9HoYjjZu6uVkEnjd7edZmzUEzXGUrL851wr78tWELvtPO5TcU75JTki51%2FIehiS50DgsIIQZ%2FhYRWGWuQRYdXaSUyznGGyCGnEoMICEKCNcGGIBpfGi8xhEjYyFohIxK2yjwrixz0ef8BneZHwPMAAAA%3D)
+**Specifikáció** - (https://tinyurl.com/mssate38)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: darab∈N
@@ -183,14 +224,29 @@ Ciklus vége
 ```
 **C# algoritmus**
 ```csharp
-
+int Megszamolas(int[] elemek,Func<int, bool> Tulajdonsag)
+{
+    int darab = 0;
+    for (int i = 0; i < elemek.Length; i++)
+    {
+        if (Tulajdonsag(elemek[i]))
+        {
+            darab++;
+        }
+    }
+    return darab;
+}
+```
+**Használat**
+```csharp
+int darab = Megszamolas(elemek,(elem) => elem % 2 == 0);
 ```
 
 ---
 
 ### Maximum kiválasztás
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2OzwqCQBCHX2WYU8IgWXkZMCjoEFG3IDAPi46w1Fq4G0ji3efsScJsqdv8%2BX7zTYv2Lrkuda6cvlXIuBYGuYqxT2VefX%2BgTyeXoU6jMPS77Fyfq51mMKrZVoU0I2xUs6ndiA%2FEpvydgyVMh9mxZJj4GPlEkOxXp4lO%2Fhw0qlOdBUjoxDqLnLZYKKeQ0WMM8XB2hBnSiGBGMCdYEMSfP73sS3olQ4yElTKCjEhYi31cHXLUZd0b7PqvgBoBAAA%3D)
+**Specifikáció** - (https://tinyurl.com/ep9hcteu)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: maxIndex∈N, maxErtek∈N
@@ -212,15 +268,31 @@ Ciklus vége
 ```
 **C# algoritmus**
 ```csharp
-
+(int,int) MaxKivalasztas(int[] elemek)
+{
+    int maxIndex = 0;
+    int maxErtek = elemek[0];
+    for (int i = 1; i < elemek.Length; i++)
+    {
+        if (elemek[i] > maxErtek)
+        {
+            maxIndex = i;
+            maxErtek = elemek[i];
+        }
+    }
+    return (maxIndex, maxErtek);
+}
 ```
-
+**Használat**
+```csharp
+(int maxIndex, int maxErtek) = MaxKivalasztas(elemek);
+```
 ---
 
 
 ### Minimum kiválasztás
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2OvQrCQBCEX2XZysAinj%2FNghZCiiCms0pSHLqBw9wpuRNEsc9z%2BiSSxEO7nd1vZvaJ%2FipHU5ujDubikHErDNKI9Q9t312X06Dk3M%2BFmk7jrSrb0u0MgzUucye5j7A1Lm3DiPdEWv%2FiYAOzfneoGSbRRtGRrPdZPjHrvw4aqwtTJUgYxAePXDzxpINGxogxrPrYEWYoFMGcYEGwJFgNf8YyBvWVQyWDQkKnrSAjErbib01AVq%2Fq9QHhfC1VGgEAAA%3D%3D)
+**Specifikáció** - (https://tinyurl.com/3pbb39b3)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: minIndex∈N, minErtek∈N
@@ -242,13 +314,30 @@ Ciklus vége
 ```
 **C# algoritmus**
 ```csharp
-
+(int,int) MinKivalasztas(int[] elemek)
+{
+    int minIndex = 0;
+    int minErtek = elemek[0];
+    for (int i = 1; i < elemek.Length; i++)
+    {
+        if (elemek[i] < minErtek)
+        {
+            minIndex = i;
+            minErtek = elemek[i];
+        }
+    }
+    return (minIndex,minErtek);
+}
+```
+**Használat**
+```csharp
+(int minIndex, int minErtek) = MinKivalasztas(elemek);
 ```
 ---
 
 ### Feltételes maximum keresés
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2PTWrDQAyFryK0SkAOHkM3oimkEGjpz65Q6nghEhmGxtPimRjTkP2c0ycptjukOz1Jn97TGf237m1t9xLsl0PGe2XQozb%2BR5ohxlealH4OMX6UZrVKs2rX7tyTZejEDTE%2BEzTSP7qD9jPVSL9tw8yNq9v6ehfuIB97bzXDohNHCaVELdcvm%2FeHzcKu%2F1nSnKS01bWCW8iXSBjUB49cnvEgQZAxQQw3o9UMMJRZQZAZgpzAEBTTG504htCedBQpC0PxJ6dEDJlBQieNIiMStupPx4BsLtXlF2rMCQRHAQAA)
+**Specifikáció** - (https://tinyurl.com/4ajcmeef)
 ```csharp
 Be: elemszam∈N, elemek∈Z[1..elemszam]
 Ki: van∈L, maxIndex∈N, maxErtek∈Z
@@ -281,13 +370,43 @@ Ciklus vége
 ```
 **C# algoritmus**
 ```csharp
-
+(bool, int, int) FeltetelesMaximum(int[] elemek, Func<int, bool> Tulajdonsag)
+{
+    bool van = false;
+    int maxIndex = -1;
+    double maxErtek = -1;
+    for (int i = 0; i < elemek.Length; i++)
+    {
+        if (Tulajdonsag(elemek[i]))
+        {
+            if (van)
+            {
+                if (elemek[i] > maxErtek)
+                {
+                    maxIndex = i;
+                    maxErtek = elemek[i];
+                }
+            }
+            else
+            {
+                maxIndex = i;
+                maxErtek = elemek[i];
+                van = true;
+            }
+        }
+    }
+    return (van, maxIndex, maxErtek);
+}
+```
+**Használat**
+```csharp
+(bool van, int maxIndex, int maxErtek) = FeltetelesMaximum(elemek, elem => elem < 0);
 ```
 ---
 
 ### Feltételes minimum keresés
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2PwWoCQQyGXyXkpBBlV%2BklsEILQqXVWy9d9zBoFoY6adkZF1G8z3Puk5Td7WBv%2BZN8%2Bf%2Fc0P%2FIwdb2YIL9VmR8EQY5ifNX47oYdzQo%2Bepi%2FCzz%2BTzNqn2z1zfL0BrtYnwncFY3epTLSDmr6yaMXL%2B6rh93YQVZ3%2FuoGSatUUooJWpabDe71%2BeJLf5Z0piktNWjglUB2RQJg%2FjgkcsbHk0wyJgohqfeayQYytmCYJYTZAQ5wWL4ozXKEJqz9CKFYVj%2BySESQ4aEapwgIxI24s%2BngJzfq%2FsvAXEHmEcBAAA%3D)
+**Specifikáció** - (https://tinyurl.com/3ybnuj9y)
 ```csharp
 Be: elemszam∈N, elemek∈Z[1..elemszam]
 Ki: van∈L, minIndex∈N, minErtek∈Z
@@ -320,13 +439,43 @@ Ciklus vége
 ```
 **C# algoritmus**
 ```csharp
-
+ (bool, int, int) FeltetelesMinimum(int[] elemek, Func<int, bool> Tulajdonsag)
+ {
+     bool van = false;
+     int minIndex = -1;
+     double minErtek = -1;
+     for (int i = 0; i < elemek.Length; i++)
+     {
+         if (Tulajdonsag(elemek[i]))
+         {
+             if (van)
+             {
+                 if (elemek[i] < minErtek)
+                 {
+                     minIndex = i;
+                     minErtek = elemek[i];
+                 }
+             }
+             else
+             {
+                 minIndex = i;
+                 minErtek = elemek[i];
+                 van = true;
+             }
+         }
+     }
+     return (van, minIndex, minErtek);
+ }
+```
+**Használat**
+```csharp
+(bool van, int minIndex, int minErtek) = FeltetelesMinimum(elemek, elem => elem >= 0);
 ```
 ---
 
 ### Keresés
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2OQYvCQAyF%2F0rISSGKs6uXQD0IPSkedtmLtYegKQy2ozizZVnxPr%2Bzv0SmRfSWl%2FfyvdzQX%2FRgK3uQYM8OGVfKoLU2%2Fl%2BaLsYt9UpPaS7MdPr0yv1179aWoRXXxbgh647618W4S0ZevSiwhFna%2FVQMo1bckBxn6%2Fwr%2Fx7Z7A1KQ1dhS8jAzMZIGNQHj1zc8ChBkPGZZVgk6nDBUBiCD4JPgjnBov%2BuFcdQSe01qb6VYWKQ0EmjyIiEV%2FW%2FdUA29%2FL%2BAJ0N7gMNAQAA)
+**Specifikáció** - (https://tinyurl.com/4h989vcn)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: van∈L,index∈Z
@@ -354,12 +503,32 @@ Elágazás vége
 ```
 **C# algoritmus**
 ```csharp
-
+(bool, int) Kereses(int[] elemek, Func<int, bool> Tulajdonsag)
+{
+    bool van;
+    int i = 0;
+    int index = -1;
+    while ((i < elemek.Length) && !Tulajdonsag(elemek[i]))
+        i++;
+    if (i < elemek.Length)
+    {
+        van = true;
+        index = i;
+    } else
+    {
+        van = false;
+    }
+    return (van, index);
+}
+```
+**Használat**
+```csharp
+(bool van, int index) = Kereses(elemek, elem => elem == 10);
 ```
 ---
 ### Eldöntés
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2OQQuCQBCF%2F8owp4JBtPIyYFDQqfBWF%2FWw2AhLuoW7eUi8%2Bzv9JaEidXvvzXsf06J9Sa4LnSunnwYZj8IgpVT2o6qh72OanDxGnQSet9yytE7NWTM0ygx9fxntqfhtYQ%2F%2BmF2LqRLdDvFKR38AmrmJziCCwF8joRPrLHLS4l05hYxLlyEcWfOCIQkINgRbgh1BOH3SKMNQqNIKEhpVCTIiYS32XTrkoMu6L%2BUsPeLsAAAA)
+**Specifikáció** - (https://tinyurl.com/42m7c9h6)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: van∈L
@@ -386,13 +555,23 @@ Elágazás vége
 ```
 **C# algoritmus**
 ```csharp
-
+bool Eldontes(int[] elemek, Func<int, bool> Tulajdonsag)
+{
+    int i = 0;
+    while (i < elemek.Length && !Tulajdonsag(elemek[i]))
+        i++;
+    return (i < elemek.Length);
+}
+```
+**Használat**
+```csharp
+bool van = Eldontes(elemek, elem => elem == 10);
 ```
 ---
 
 ### Mind eldöntés
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2OsQqDQAyGXyVkauGQOrgE7FDaobR163Q6HBrhqHct3rlU3H1On6ScIhYy5E%2F%2B%2F0t6dB8uda1L5fXbIuGJCbhh477KTOOYiVnxK%2FQyjqJ1V%2BRtbm%2BawGhbTeN4D%2FpSb2E4wiHMnvXiSR%2FX7LzT6R9DLGipC0gh2aNAz847JNljpbxCwtVKkATYEiCQiYCt5l%2FCDQLfdowCrTKMhCiwZdc1HikeiuEH%2BULHvO4AAAA%3D)
+**Specifikáció** - (https://tinyurl.com/mr3u84uk)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: mind∈L
@@ -408,7 +587,7 @@ T(elemek[i]) ~ elemek[i] = 5
 Változó
     i:Egész
 i:=1
-Ciklus amíg i <= elemszam és nem T(elemek[i])
+Ciklus amíg i <= elemszam és T(elemek[i])
     i:= i + 1
 Ciklus vége
 Ha i <= elemszam akkor
@@ -419,15 +598,25 @@ Elágazás vége
 ```
 **C# algoritmus**
 ```csharp
-
+bool MindEldontes(int[] elemek, Func<int, bool> Tulajdonsag)
+{
+    int i = 0;
+    while (i < elemek.Length && Tulajdonsag(elemek[i]))
+        i++;
+    return (i == elemek.Length);
+}
+```
+**Használat**
+```csharp
+bool mind = MindEldontes(elemek, elem => elem == 5);
 ```
 ---
 
 ### Kiválasztás
 
-Ez az algoritmus feltételezi, hogy az adott elem biztosan létezik.
+Ez az algoritmus feltételezi, hogy az adott elem biztosan létezik. C# kódban azonban a biztonság kedvé-ért -1 a visszatérési érték amennyiben túl mennénk az indexekkel.
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACqtWKi5ITc5My0xOLMnMz1OyUnJKtVJIzUnNTc1%2B1NHhF22op2caG1MUk%2BedaaWQnVnmmZeSWgGSAYm5plkp6IIYoWkISVtvz7DDjT6OwVEhGpl2toY6ENOiM2MVbBXMNZV0lEpSi0uKlayiq5VSEksSlayUICqsFKJNdRRMdRTMwSTEWpipVgrGSjpKeYm5qUpWSko6SkWpxaU5JUpWhrWxtQBTYnZtxQAAAA%3D%3D)
+**Specifikáció** - (https://tinyurl.com/5f3u35a5)
 ```csharp
 Be: elemek∈N[1..5]
 Ki: kivIndex∈N
@@ -449,13 +638,29 @@ Ciklus vége
 ```
 **C# algoritmus**
 ```csharp
-
+int Kivalaszt(int[] elemek, Func<int, bool> Tulajdonsag)
+{
+    int i = 0;
+    while (i < elemek.Length && !Tulajdonsag(elemek[i]))
+        i++;
+    return (i < elemek.Length) ? i : -1;
+}
+```
+**Használat**
+```csharp
+int kivIndex = Kivalaszt(elemek, elem => elem == 7);
+```
+**Ternáris kifejezés**
+Tulajdonképpen egy if-else kifejezés, egyszerű, kompakt kifejezésekre használjuk, [bővebben](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator).
+```csharp
+    (kifejezés) ? igaz_ág : hamis_ág;
 ```
 ---
 
 ### Másolás
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACm2PwUrDUBBFf%2BUyq0TG0tRGcCBdCLpR46K4SrN41El52KTS9xRM6cJd%2F8s%2F8UvkJcRacDUzdw5z7%2BzIverSVnZpvN00JHStAl1r7VpTfx8OOXeTvoS%2BSEajYVcutovmzgoaXX206uetqTf%2FU7fvv5QgP5%2FlHFQAgxoFNM66ctb1AbipjkkwwzhoT5UgOnGMs4evz%2FnjfWSzP748XO7DF7aMY2Ly6rwjKXb0bLwhoYEXpOF8TwuKhDFhXDCmjLR74sS0J6aMK0ZyyZikJTE1plYSIqature1J0n25f4HzKrnAWMBAAA%3D)
+**Specifikáció** - (https://tinyurl.com/3see3wk7)
+
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: negyzetSzamok∈N[1..elemszam]
@@ -479,13 +684,34 @@ Ciklus vége
 ```
 **C# algoritmus**
 ```csharp
-
+int[] Masolas(int[] elemek,Func<int, int> Fuggveny)
+{
+    int[] fvElemek = new int[elemek.Length];
+    for (int i = 0; i < elemek.Length; i++)
+    {
+        fvElemek[i] = Fuggveny(elemek[i]);
+    }
+    return fvElemek;
+}
+```
+**Használat**
+```csharp
+int[] fvElemek = Masolas(elemek, elem => elem * elem);
+```
+```csharp
+int Negyzet(int szam)
+{
+    return szam * szam;
+}
+int[] fvElemek = Masolas(elemek, elem => Negyzet(elem));
 ```
 ---
 
 ### Kiválogatás
 
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACk2OzWrCUBCFX2WYlYFBjD%2BbQQstSpGUdqPdXLO4NRMYYtLivQ2l4qI738s38UlKbpS4OzPnO3PmgO5Ltprr1nr9rJDxSRhkJ6X7teXldHqlMEnRaBP3%2Bzcv3ew3VaIMhdbzj5YstF5Wmfx0dDADusi7u%2FAAg2a3zhl6AaEuGs2S5fv57%2BXt%2BXHV09ldJbWfGE1hCmMCjZDQi%2FMO2Rwws94i441mmDQdbYbBDAliamIjgkl4KTQzjK762s9gYoIhwThFwsqWgoxIuBf3vfPI8TE9%2FgN%2FJqenNwEAAA%3D%3D)
+Kiválogatásnál mivel a képzésben tömbökkel dolgozunk, a kimeneti tömb mindig ugyan olyan hosszú mint a bemeneti tömb. Ha nem akarjuk kiírni az üres értékeket akkor kiírásnál csak a kivDb-ig szabad elmenni. Egy újabb másolással, **Listával** vagy LINQ-val el lehet tüntetni ezeket a felesleges értékeket, de a képzésen ezek használata tilos, így a kiírást kell megfelelően kezelni.
+
+**Specifikáció** - (https://tinyurl.com/27shssyu)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: kivDb∈N, kivIndexek∈N[1..kivDb]
@@ -510,14 +736,34 @@ Ciklus vége
 ```
 **C# algoritmus**
 ```csharp
-
+(int, int[]) Kivalogatas(int[] elemek, Func<int,bool> Tulajdonsag)
+{
+    int[] kivIndexek = new int[elemek.Length];
+    int kivDb = 0;
+    for (int i = 0; i < elemek.Length; i++)
+    {
+        if (Tulajdonsag(elemek[i]))
+        {
+            kivIndexek[kivDb++] = i;
+        }
+    }
+    return (kivDb, kivIndexek);
+}
 ```
+**Használat**
+```csharp
+(int kivDb, int[] kivIndexek) = Kivalogatas(elemek, elem => elem > 20);
+```
+
+
 ---
 ## Egyéb algoritmusok
 
 ### Egyedi elemek kiválogatása
-> Kiválogatás + Eldöntés
-**Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACmWPTU7DMBCFrzKaVSxNIwLNZqRUKiIg1CpsoJvUC9M6kpWfotpEiKoLdr0XN%2BEkyA4pQmys5zdv%2FD0f0L7ojanMRjmz65DxWjPoRrf2XbVfp1NB4aZrr8skjseZXO%2FX3cIw1Ka%2FeR6StenzP%2BEwC8nbnqHfNS5nKCazJXkPAAYvMt1Wv4ksWs2LyGRJHAdjktDALo2EDEbtR1II%2F0Je%2FZaFGVx476liiAKYzn1EtrhffX4sH%2B7mjwNg3KJOt2MJQWeGFEjotHUWuTzgVjmFjOMSQ%2BpJQ5ihvCS4IpiGMw3fDXyG6Y%2FO%2FyVTiYSdajUyIuFe29fGISdHefwGKjJcp5QBAAA%3D)
+
+Az algoritmus a kiválogatás és eldöntés kombinációját használja.
+
+**Specifikáció** - (https://tinyurl.com/2p8b5fh8)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
 Ki: kivDb∈N, kivElemek∈N[1..kivDb]
@@ -557,7 +803,34 @@ Függvény vége
 ```
 **C# algoritmus**
 ```csharp
-
+(int, int[]) EgyediekKivalogatasa(int[] elemek)
+{
+    int[] kivElemek = new int[elemek.Length];
+    int kivDb = 0;
+    for (int i = 0; i < elemek.Length; i++)
+    {
+        if (!VoltE(i))
+        {
+            kivElemek[kivDb++] = elemek[i];
+        }
+    }
+    return (kivDb, kivElemek);
+    
+    // Helyi függvény
+    bool VoltE(int index)
+    {
+        int i = 0;
+        while (i < index && elemek[i] != elemek[index])
+            i++;
+        return (i < index);
+    }
+}
+```
+**Használat**
+```csharp
+(int kivDb, int[] kivElemek) = EgyediekKivalogatasa(elemek);
 ```
 
-#### **[FEL](#programozási-tételek)**
+---
+
+<a href="#programozási-tételek"><div style="text-align: right">**Oldal elejére**</div></a>
