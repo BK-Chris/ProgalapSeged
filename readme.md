@@ -2,8 +2,8 @@
 
 >Segédanyag az [Eötvös Loránd Tudomány Egyetem](https://www.inf.elte.hu/) - Programtervező Informatikus (FOSZK) - Programozási Alapismeretek (IK-19fszPAEG) - 2024/25/I. félévben oktatott tantárgyához.
 
-A képzés során az alapvető programozási tételek, ezek algoritmusának megírását és használatáról tanulunk. A képzés során egy [specifikációs szoftvert](https://progalapfsz.elte.hu/specifikacio/) is használunk. A program jelentős segítséget nyújt az elméleti feladatok gyors megoldásában, lehetővé téve, hogy hamarabb áttérjünk az algoritmusok megírására és a kódolásra. Emellett a szoftver lehetőséget biztosított tesztesetek vizsgálatára, amely elősegíti annak korai felismerését, hogy a megoldás helyes irányba halad-e.
-Az itt felsorolt algoritmusok a modernebb programozási nyelvekben kivétel nélkül megtalálhatóak, azonban ezeknek az ismerete és müködése nélkülözhetetlen tudás a továbbiakban azok számára akik ezt a pályát választják.
+A képzés során az alapvető programozási tételek, ezek algoritmusának megírását és használatáról tanulunk. A képzés során egy [specifikációs szoftvert](https://progalapfsz.elte.hu/specifikacio/) is használunk. A program jelentős segítséget nyújt az elméleti feladatok gyors megoldásában, lehetővé téve, hogy hamarabb áttérjünk az algoritmusok megírására és a kódolásra. Ezen kívűl a szoftver lehetőséget biztosít tesztesetek vizsgálatára, amely elősegíti a korai felismerését annak, hogy a megoldás helyes irányba halad-e.
+Az itt felsorolt algoritmusok a modernebb programozási nyelvekben kivétel nélkül megtalálhatóak, azonban ezeknek az ismerete és működése nélkülözhetetlen tudás a továbbiakban azok számára akik ezt a pályát választják.
 Ez a dokumentum egy [korábbi segédanyag](https://github.com/BK-Chris/_seged/) átdolgozása, itt csak általános megoldásokat találsz.
 
 ## Tartalom
@@ -98,7 +98,7 @@ tömb = MÁSOL(i=1..elemszám, f(elemek[i]))
 ```
 
 ### Saját függvény készítése
-```
+```csharp
 Fv: függvénynév:TÍPUS->TÍPUS,           // Deklaráció egy bemenő paraméterrel
     függvénynév(PARAMÉTER1)=(/* Függvény leírása */)
 
@@ -126,9 +126,12 @@ Uf: // Utófeltétel
 
 ## Alapvető programozási tételek
 
-Az algoritmusoknak célja, hogy a lehető leghatékonyabb megoldást illetve választ adja egy problémára.
+Az algoritmusok célja, hogy egy problémára a lehető leghatékonyabb módon megoldást nyújtson.
 
 > Néhány helyen a specifikáció miatt írtam visszavezetést, de a pszeudo kódba az általános alakot adtam meg.
+
+> - A specifikáció készítőben és pszeudokódban az indexelés 1- től kezdődik.
+> - C# kódban az indexelés 0- tól kezdődik.
 
 ### Összegzés
 
@@ -513,7 +516,7 @@ Ciklus vége
 ## Egyéb algoritmusok
 
 ### Egyedi elemek kiválogatása
-> Kiválógatás + Eldöntés
+> Kiválogatás + Eldöntés
 **Specifikáció** [LINK](https://progalapfsz.elte.hu/specifikacio/?data=H4sIAAAAAAAACmWPTU7DMBCFrzKaVSxNIwLNZqRUKiIg1CpsoJvUC9M6kpWfotpEiKoLdr0XN%2BEkyA4pQmys5zdv%2FD0f0L7ojanMRjmz65DxWjPoRrf2XbVfp1NB4aZrr8skjseZXO%2FX3cIw1Ka%2FeR6StenzP%2BEwC8nbnqHfNS5nKCazJXkPAAYvMt1Wv4ksWs2LyGRJHAdjktDALo2EDEbtR1II%2F0Je%2FZaFGVx476liiAKYzn1EtrhffX4sH%2B7mjwNg3KJOt2MJQWeGFEjotHUWuTzgVjmFjOMSQ%2BpJQ5ihvCS4IpiGMw3fDXyG6Y%2FO%2FyVTiYSdajUyIuFe29fGISdHefwGKjJcp5QBAAA%3D)
 ```csharp
 Be: elemszam∈N, elemek∈N[1..elemszam]
