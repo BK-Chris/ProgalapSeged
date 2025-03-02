@@ -1,5 +1,7 @@
 # Programozási tételek
 
+[Főoldal](../readme.md)
+
 > Az alábbi segédanyag az [Eötvös Loránd Tudomány Egyetem](https://www.inf.elte.hu/) - Programtervező Informatikus (FOSZK) - Programozási Alapismeretek (IK-19fszPAEG) - 2024/25/I. félévben oktatott tantárgyához készült.
 
 A képzés során az alapvető programozási tételek, ezek algoritmusának megírásáról és használatukról tanulunk. A képzés során egy [specifikációs szoftver](https://progalapfsz.elte.hu/specifikacio/)t is használunk. A program jelentős segítséget nyújt az elméleti feladatok gyors megoldásában, lehetővé téve, hogy hamarabb áttérjünk az algoritmusok megírására és a kódolásra. Ezen kívül a szoftver lehetőséget biztosít tesztesetek vizsgálatára, amely elősegíti a korai felismerését annak, hogy a megoldás helyes irányba halad-e.

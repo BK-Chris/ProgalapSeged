@@ -2,7 +2,7 @@
 
 [Főoldal](../readme.md)
 
-Az alapvető algoritmusokról bővebben [itt](prog_alap_ism.md#alapvető-programozási-tételek) olvashatsz.
+Az alapvető algoritmusokról bővebben [itt](AlapvetoProgTetelek.md#alapvető-programozási-tételek) olvashatsz.
 
 ## Tartalom
 

@@ -8,9 +8,22 @@ A segédanyag az [Eötvös Loránd Tudomány Egyetem](https://www.inf.elte.hu/) 
 
 ## Tartalom
 
-- Jegyzetek
-  - [Programozási Tételek](/jegyzetek/prog_alap_ism.md)
-  - [Algoritmusok](/jegyzetek/algo.md)
+**Jegyzetek**
+- [Programozási Tételek](/jegyzetek/AlapvetoProgTetelek.md)
+- [Algoritmusok](/jegyzetek/Algoritmusok.md)
+
+**C# osztályok**
+- [Kereses](/Kereses/)
+  - [Kereses.cs](/Kereses/Kereses.cs)
+- [Rendezes](/Rendezes/)
+  - [Rendezes.cs](/Rendezes/Rendezes.cs)
+
+**Tesztek**
+- [TestKereses](/TestKereses/)
+  - [TestKereses.cs](/TestKereses/TestKereses.cs)
+- [TestRendezes](/TestRendezes/)
+  - [TestRendezes.cs](/TestRendezes/TestRendezes.cs)
+
 
 ---
 
